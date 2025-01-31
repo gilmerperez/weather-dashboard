@@ -61,7 +61,11 @@ class WeatherService {
   // * 09-Servers-and-APIs/02-Challenge/Develop/client/src/main.ts
 
   // TODO: Create fetchLocationData method
-  // private async fetchLocationData(query: string) {}
+  private async fetchLocationData(query: string) {
+    const geoQuery = this.buildGeocodeQuery(query);
+    const response = await fetch(geoQuery);
+    return await response.json();
+  }
   // TODO: Create destructureLocationData method
   // private destructureLocationData(locationData: Coordinates): Coordinates {}
   // TODO: Create buildGeocodeQuery method
