@@ -66,6 +66,7 @@ class WeatherService {
     const response = await fetch(geoQuery);
     return await response.json();
   }
+  
   // TODO: Create destructureLocationData method
   private destructureLocationData(locationData: Coordinates): Coordinates {
     return {
@@ -76,8 +77,11 @@ class WeatherService {
       state: locationData.state,
     };
   }
+
   // TODO: Create buildGeocodeQuery method
-  // private buildGeocodeQuery(): string {}
+  private buildGeocodeQuery(query: string): string {
+    return `${this.baseURL}/geo/1.0/direct?q=${query}&limit=1&appid=${this.apiKey}`;
+  }
   // TODO: Create buildWeatherQuery method
   // private buildWeatherQuery(coordinates: Coordinates): string {}
   // TODO: Create fetchAndDestructureLocationData method
