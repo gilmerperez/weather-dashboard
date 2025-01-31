@@ -136,12 +136,12 @@ class WeatherService {
 
   // TODO: Complete getWeatherForCity method
   async getWeatherForCity(city: string) {
-    this.city = city; // Store the city in the class property
+    this.city = city;
     const locationData = await this.fetchAndDestructureLocationData(city);
     const weatherData = await this.fetchWeatherData(locationData);
     const currentWeather = this.parseCurrentWeather(weatherData);
 
-    return currentWeather; // Return weather data for the city
+    return currentWeather;
   }
 }
 
