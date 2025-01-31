@@ -67,7 +67,15 @@ class WeatherService {
     return await response.json();
   }
   // TODO: Create destructureLocationData method
-  // private destructureLocationData(locationData: Coordinates): Coordinates {}
+  private destructureLocationData(locationData: Coordinates): Coordinates {
+    return {
+      name: locationData.name,
+      lat: locationData.lat,
+      lon: locationData.lon,
+      country: locationData.country,
+      state: locationData.state,
+    };
+  }
   // TODO: Create buildGeocodeQuery method
   // private buildGeocodeQuery(): string {}
   // TODO: Create buildWeatherQuery method
