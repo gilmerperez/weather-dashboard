@@ -102,7 +102,18 @@ class WeatherService {
   }
 
   // TODO: Build parseCurrentWeather method
-  // private parseCurrentWeather(response: any) {}
+  private parseCurrentWeather(response: any): Weather {
+    const currentWeather = new Weather(
+      response.name,
+      dayjs(),
+      response.main.temp,
+      response.wind.speed,
+      response.main.humidity,
+      response.weather[0].icon,
+      response.weather[0].description
+    );
+    return currentWeather;
+  }
 
   // TODO: Complete buildForecastArray method
   // private buildForecastArray(currentWeather: Weather, weatherData: any[]) {}
