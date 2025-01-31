@@ -89,7 +89,10 @@ class WeatherService {
   }
 
   // TODO: Create fetchAndDestructureLocationData method
-  // private async fetchAndDestructureLocationData() {}
+  private async fetchAndDestructureLocationData(query: string): Promise<Coordinates> {
+    const locationData = await this.fetchLocationData(query);
+    return this.destructureLocationData(locationData[0]);
+  }
 
   // TODO: Create fetchWeatherData method
   // private async fetchWeatherData(coordinates: Coordinates) {}
