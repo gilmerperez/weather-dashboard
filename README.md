@@ -66,7 +66,7 @@ This application requires the following tools and technologies to operate:
 ## Additional Resources
 
 * The URL of the GitHub repository: [GitHub Repository](https://github.com/gilmerperez/weather-dashboard/tree/main)
-* The URL of the functional, deployed application:
+* The URL of the functional, deployed application: https://weather-dashboard-llbj.onrender.com
 * Learn more about how to work with the OpenWeather API: [OpenWeather API Documentation](https://openweathermap.org/forecast5)
 * Walkthrough on deploying your app: [Render Deployment Guide](https://coding-boot-camp.github.io/full-stack/render/render-deployment-guide)
 * Learn about how to use environment variables with Render: [Render Environment Variables](https://docs.render.com/configure-environment-variables)
