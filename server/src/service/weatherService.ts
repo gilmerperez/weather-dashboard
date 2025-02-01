@@ -141,7 +141,13 @@ class WeatherService {
     const weatherData = await this.fetchWeatherData(locationData);
     const currentWeather = this.parseCurrentWeather(weatherData);
 
-    return currentWeather;
+    const forecastArray = this.buildForecastArray(currentWeather, weatherData.daily);
+
+    console.log(`Weather data retrieved for: ${this.city}`);
+    return {
+      currentWeather,
+      forecast: forecastArray
+  };
   }
 }
 

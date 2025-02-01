@@ -29,6 +29,7 @@ router.get('/history', async (_req: Request, res: Response) => {
       return res.json(history);
   } catch (err) {
       res.status(500).json({ message: 'Failed to fetch search history', error: err });
+      return;
   }
 });
 
