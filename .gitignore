@@ -128,3 +128,15 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# Ignore node_modules folder
+node_modules/
+
+# Ignore .npmrc file
+.npmrc
+
+# Ignore package-lock.json
+package-lock.json
+
+# Ignore .env file inside the server folder
+/server/.env
