@@ -35,20 +35,34 @@ API Calls
 */
 
 const fetchWeather = async (cityName: string) => {
-  const response = await fetch('/api/weather/', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ cityName }),
-  });
+  try {
+    const response = await fetch('/api/weather/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ cityName }),
+    });
 
-  const weatherData = await response.json();
+    if (!response.ok) {
+      const errorData = await response.json().catch(() => ({ message: 'Failed to fetch weather data' }));
+      throw new Error(errorData.message || `HTTP error! status: ${response.status}`);
+    }
 
-  console.log('weatherData: ', weatherData);
+    const weatherData = await response.json();
 
-  renderCurrentWeather(weatherData[0]);
-  renderForecast(weatherData.slice(1));
+    console.log('weatherData: ', weatherData);
+
+    if (!weatherData || !Array.isArray(weatherData) || weatherData.length === 0) {
+      throw new Error('Invalid weather data received');
+    }
+
+    renderCurrentWeather(weatherData[0]);
+    renderForecast(weatherData.slice(1));
+  } catch (error) {
+    console.error('Error fetching weather:', error);
+    alert(`Error: ${error instanceof Error ? error.message : 'Failed to fetch weather data. Please try again.'}`);
+  }
 };
 
 const fetchSearchHistory = async () => {
@@ -253,12 +267,15 @@ const handleSearchFormSubmit = (event: any): void => {
   event.preventDefault();
 
   if (!searchInput.value) {
-    throw new Error('City cannot be blank');
+    alert('Please enter a city name');
+    return;
   }
 
   const search: string = searchInput.value.trim();
   fetchWeather(search).then(() => {
     getAndRenderHistory();
+  }).catch((error) => {
+    console.error('Error in search:', error);
   });
   searchInput.value = '';
 };
