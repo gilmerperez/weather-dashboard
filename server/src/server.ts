@@ -13,7 +13,7 @@ const __dirname = path.dirname(__filename);
 
 const app = express();
 
-const PORT = process.env.PORT || 3001;
+const PORT = Number(process.env.PORT) || 3001;
 
 // Serve static files of entire client dist folder
 // From server/dist, we need to go up two levels to reach root, then into client/dist
